@@ -1,0 +1,486 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Wanderly helps you pick the right destination in India and send a simple booking request.">
+  <meta name="theme-color" content="#0F2430">
+  <link rel="icon" type="image/svg+xml" href="images/logo/favicon.svg">
+  <title>Wanderly | Explore. Discover. Travel.</title>
+
+  <!-- Fonts: Bricolage Grotesque (headings) + Figtree (body) -->
+  <link rel="preconnect" href="https://commons.wikimedia.org">
+  <link rel="preconnect" href="https://upload.wikimedia.org" crossorigin>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500..800&family=Figtree:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+  <!-- Bootstrap 5.3.3 CSS + Bootstrap Icons (CDN) -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" rel="stylesheet">
+
+  <!-- Our custom stylesheet (loaded after Bootstrap so it can refine it) -->
+  <link href="css/style.css" rel="stylesheet">
+</head>
+<body>
+
+  <!-- Wanderly logo mark, defined once and reused with <use> -->
+  <svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false">
+    <symbol id="wMarkSun" viewBox="0 0 64 64">
+      <rect width="64" height="64" rx="16" fill="#F4B63F"/>
+      <path d="M14 25 L24 47 L32 31 L40 47 L50 25" fill="none" stroke="#0F2430" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/>
+      <circle cx="32" cy="15" r="4.6" fill="#0F2430"/>
+    </symbol>
+  </svg>
+
+  <a class="skip-link" href="#destinations">Skip to destinations</a>
+
+  <!-- ============ A. NAVBAR ============ -->
+  <nav class="navbar navbar-expand-lg navbar-dark site-nav fixed-top">
+    <div class="container">
+      <a class="navbar-brand brand" href="#home">
+        <svg class="brand-logo" aria-hidden="true" focusable="false"><use href="#wMarkSun"/></svg><span>Wanderly</span>
+      </a>
+
+      <button class="navbar-toggler" type="button"
+              data-bs-toggle="collapse" data-bs-target="#mainNav"
+              aria-controls="mainNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <div class="collapse navbar-collapse" id="mainNav">
+        <ul class="navbar-nav ms-auto align-items-lg-center gap-lg-1">
+          <li class="nav-item"><a class="nav-link" href="#home">Home</a></li>
+          <li class="nav-item"><a class="nav-link" href="#destinations">Destinations</a></li>
+          <li class="nav-item"><a class="nav-link" href="#when">When to go</a></li>
+          <li class="nav-item"><a class="nav-link" href="#about">About</a></li>
+          <li class="nav-item ms-lg-3 mt-2 mt-lg-0">
+            <a class="btn btn-sun btn-sm px-4" href="#booking"><i class="bi bi-calendar2-check" aria-hidden="true"></i>Book Now</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <!-- ============ B. HERO SECTION ============ -->
+  <header id="home" class="hero">
+
+    <!-- Layer 1: drawn landscape (always visible, even before photos are added) -->
+    <svg class="hero-scene" viewBox="0 0 1440 800" preserveAspectRatio="xMidYMax slice" aria-hidden="true" focusable="false">
+      <defs>
+        <radialGradient id="sunGlow" cx="50%" cy="50%" r="50%">
+          <stop offset="0" stop-color="#F4B63F" stop-opacity=".55"/>
+          <stop offset="1" stop-color="#F4B63F" stop-opacity="0"/>
+        </radialGradient>
+      </defs>
+      <circle cx="1060" cy="300" r="320" fill="url(#sunGlow)"/>
+      <circle cx="1060" cy="300" r="96" fill="#F4B63F"/>
+      <path d="M0 560 L170 420 L290 500 L470 330 L640 510 L790 430 L960 540 L1130 400 L1300 500 L1440 440 V800 H0 Z" fill="#245F6A"/>
+      <path d="M0 640 L220 520 L380 595 L570 470 L760 615 L940 540 L1140 650 L1320 560 L1440 615 V800 H0 Z" fill="#17505C" opacity=".9"/>
+      <path d="M0 715 Q180 678 360 715 T720 715 T1080 715 T1440 715 V800 H0 Z" fill="#0F2430"/>
+    </svg>
+
+    <!-- Layer 2: your photo. Missing file = nothing shows, the drawing stays. -->
+    <div class="hero-photo"></div>
+
+    <!-- Layer 3: dark gradient so the text is always readable -->
+    <div class="hero-scrim"></div>
+
+    <div class="container hero-inner">
+      <div class="row">
+        <div class="col-xl-7 col-lg-8">
+          <h1 class="hero-title">Explore the World</h1>
+          <p class="hero-lead">Discover beautiful destinations and plan your next adventure.</p>
+
+          <div class="d-flex flex-wrap gap-3 mb-5">
+            <a href="#destinations" class="btn btn-sun btn-lg px-4"><i class="bi bi-compass" aria-hidden="true"></i>Explore Destinations</a>
+            <a href="#booking" class="btn btn-glass btn-lg px-4"><i class="bi bi-map" aria-hidden="true"></i>Plan my trip</a>
+          </div>
+
+          <nav aria-label="Jump to a destination">
+            <ul class="hero-pills list-unstyled d-flex flex-wrap gap-2 mb-0">
+              <li><a href="#kerala">Kerala</a></li>
+              <li><a href="#goa">Goa</a></li>
+              <li><a href="#kashmir">Kashmir</a></li>
+              <li><a href="#rajasthan">Rajasthan</a></li>
+              <li><a href="#manali">Manali</a></li>
+              <li><a href="#andaman">Andaman</a></li>
+            </ul>
+          </nav>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+
+    <!-- ============ C. POPULAR DESTINATIONS ============ -->
+    <section id="destinations" class="section-pad">
+      <div class="container">
+        <div class="section-head">
+          <h2>Popular Destinations</h2>
+          <p>Six places travellers keep coming back to. Pick one and start planning.</p>
+        </div>
+
+        <!-- Grid: 3 cards on desktop, 2 on tablet, 1 on mobile -->
+        <div class="row g-4">
+
+          <!-- Card 1: Kerala -->
+          <div class="col-lg-4 col-md-6 col-12">
+            <article class="card dest-card dest-kerala h-100" id="kerala">
+              <div class="dest-scene">
+                <img src="https://commons.wikimedia.org/wiki/Special:FilePath/Kerala_backwaters,_Vembanad_Lake,_Houseboats,_India.jpg?width=900" alt="Houseboats on the Kerala backwaters" loading="lazy" decoding="async">
+                <span class="season-tag"><i class="bi bi-calendar3" aria-hidden="true"></i> Sep to Mar</span>
+              </div>
+              <div class="card-body d-flex flex-column">
+                <h3 class="card-title">Kerala</h3>
+                <p class="dest-angle">Backwaters and nature</p>
+                <p class="card-text">Glide through quiet backwaters on a houseboat, then walk through green tea hills and spice gardens.</p>
+                <ul class="place-list list-unstyled">
+                  <li>Alleppey</li><li>Munnar</li><li>Thekkady</li>
+                </ul>
+                <a href="#booking" class="btn btn-dest mt-auto"><i class="bi bi-tree" aria-hidden="true"></i>Explore Kerala</a>
+              </div>
+            </article>
+          </div>
+
+          <!-- Card 2: Goa -->
+          <div class="col-lg-4 col-md-6 col-12">
+            <article class="card dest-card dest-goa h-100" id="goa">
+              <div class="dest-scene">
+                <img src="https://commons.wikimedia.org/wiki/Special:FilePath/Anjuna_Beach,_Goa,_India,_Legendary_Curlies_beach_shack.jpg?width=900" alt="Beach shack and visitors on Anjuna Beach, Goa" loading="lazy" decoding="async">
+                <span class="season-tag"><i class="bi bi-calendar3" aria-hidden="true"></i> Nov to Feb</span>
+              </div>
+              <div class="card-body d-flex flex-column">
+                <h3 class="card-title">Goa</h3>
+                <p class="dest-angle">Beaches and coastal travel</p>
+                <p class="card-text">Sunny beaches, beach shacks, old Portuguese churches and an unhurried coastal way of life.</p>
+                <ul class="place-list list-unstyled">
+                  <li>Baga</li><li>Palolem</li><li>Old Goa</li>
+                </ul>
+                <a href="#booking" class="btn btn-dest mt-auto"><i class="bi bi-umbrella" aria-hidden="true"></i>Explore Goa</a>
+              </div>
+            </article>
+          </div>
+
+          <!-- Card 3: Kashmir -->
+          <div class="col-lg-4 col-md-6 col-12">
+            <article class="card dest-card dest-kashmir h-100" id="kashmir">
+              <div class="dest-scene">
+                <img src="https://commons.wikimedia.org/wiki/Special:FilePath/Shikara_in_Dal_Lake_in_Kashmir.JPG?width=900" alt="A shikara boat on Dal Lake, Kashmir" loading="lazy" decoding="async">
+                <span class="season-tag"><i class="bi bi-calendar3" aria-hidden="true"></i> Apr to Oct</span>
+              </div>
+              <div class="card-body d-flex flex-column">
+                <h3 class="card-title">Kashmir</h3>
+                <p class="dest-angle">Mountains and valleys</p>
+                <p class="card-text">Snow-capped peaks, flower-filled valleys and calm lakes. A postcard that you can walk into.</p>
+                <ul class="place-list list-unstyled">
+                  <li>Dal Lake</li><li>Gulmarg</li><li>Pahalgam</li>
+                </ul>
+                <a href="#booking" class="btn btn-dest mt-auto"><i class="bi bi-snow2" aria-hidden="true"></i>Explore Kashmir</a>
+              </div>
+            </article>
+          </div>
+
+          <!-- Card 4: Rajasthan -->
+          <div class="col-lg-4 col-md-6 col-12">
+            <article class="card dest-card dest-rajasthan h-100" id="rajasthan">
+              <div class="dest-scene">
+                <img src="https://commons.wikimedia.org/wiki/Special:FilePath/Jaipur_03-2016_02_Amber_Fort.jpg?width=900" alt="Amber Fort on its hill near Jaipur, Rajasthan" loading="lazy" decoding="async">
+                <span class="season-tag"><i class="bi bi-calendar3" aria-hidden="true"></i> Oct to Mar</span>
+              </div>
+              <div class="card-body d-flex flex-column">
+                <h3 class="card-title">Rajasthan</h3>
+                <p class="dest-angle">Forts and culture</p>
+                <p class="card-text">Hilltop forts, royal palaces, colourful bazaars and camel safaris across golden desert dunes.</p>
+                <ul class="place-list list-unstyled">
+                  <li>Jaipur</li><li>Udaipur</li><li>Jaisalmer</li>
+                </ul>
+                <a href="#booking" class="btn btn-dest mt-auto"><i class="bi bi-bricks" aria-hidden="true"></i>Explore Rajasthan</a>
+              </div>
+            </article>
+          </div>
+
+          <!-- Card 5: Manali -->
+          <div class="col-lg-4 col-md-6 col-12">
+            <article class="card dest-card dest-manali h-100" id="manali">
+              <div class="dest-scene">
+                <img src="https://commons.wikimedia.org/wiki/Special:FilePath/Kullu_Valley,_Beas_River_near_Manali,_India.jpg?width=900" alt="Beas River and pine-covered hills near Manali" loading="lazy" decoding="async">
+                <span class="season-tag"><i class="bi bi-calendar3" aria-hidden="true"></i> Mar to Jun, Dec to Feb</span>
+              </div>
+              <div class="card-body d-flex flex-column">
+                <h3 class="card-title">Manali</h3>
+                <p class="dest-angle">Hills and adventure</p>
+                <p class="card-text">A hill town for people who like to move: trekking, paragliding, river rafting and snow in winter.</p>
+                <ul class="place-list list-unstyled">
+                  <li>Solang Valley</li><li>Old Manali</li><li>Beas River</li>
+                </ul>
+                <a href="#booking" class="btn btn-dest mt-auto"><i class="bi bi-signpost-split" aria-hidden="true"></i>Explore Manali</a>
+              </div>
+            </article>
+          </div>
+
+          <!-- Card 6: Andaman -->
+          <div class="col-lg-4 col-md-6 col-12">
+            <article class="card dest-card dest-andaman h-100" id="andaman">
+              <div class="dest-scene">
+                <img src="https://commons.wikimedia.org/wiki/Special:FilePath/Havelock_Island,_Mangrove_tree_on_the_beach,_Andaman_Islands.jpg?width=900" alt="A lone tree on a turquoise beach, Havelock Island, Andaman" loading="lazy" decoding="async">
+                <span class="season-tag"><i class="bi bi-calendar3" aria-hidden="true"></i> Oct to May</span>
+              </div>
+              <div class="card-body d-flex flex-column">
+                <h3 class="card-title">Andaman</h3>
+                <p class="dest-angle">Beaches and islands</p>
+                <p class="card-text">Clear turquoise water, white-sand beaches and some of the best snorkelling and diving in India.</p>
+                <ul class="place-list list-unstyled">
+                  <li>Havelock</li><li>Neil Island</li><li>Port Blair</li>
+                </ul>
+                <a href="#booking" class="btn btn-dest mt-auto"><i class="bi bi-water" aria-hidden="true"></i>Explore Andaman</a>
+              </div>
+            </article>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ D. DESTINATION INFORMATION ============ -->
+    <section id="when" class="section-pad section-mist">
+      <div class="container">
+        <div class="section-head">
+          <h2>When to go</h2>
+          <p>The filled squares are the best months for each destination. Find the column for your travel month and see what lights up.</p>
+        </div>
+
+        <div class="season-card">
+          <div class="table-responsive">
+            <table class="season-table table align-middle mb-0">
+              <caption class="visually-hidden">Best months to visit each destination</caption>
+              <thead>
+                <tr>
+                  <th scope="col" class="dest-col">Destination</th>
+                  <th scope="col"><abbr title="January">J</abbr></th>
+                  <th scope="col"><abbr title="February">F</abbr></th>
+                  <th scope="col"><abbr title="March">M</abbr></th>
+                  <th scope="col"><abbr title="April">A</abbr></th>
+                  <th scope="col"><abbr title="May">M</abbr></th>
+                  <th scope="col"><abbr title="June">J</abbr></th>
+                  <th scope="col"><abbr title="July">J</abbr></th>
+                  <th scope="col"><abbr title="August">A</abbr></th>
+                  <th scope="col"><abbr title="September">S</abbr></th>
+                  <th scope="col"><abbr title="October">O</abbr></th>
+                  <th scope="col"><abbr title="November">N</abbr></th>
+                  <th scope="col"><abbr title="December">D</abbr></th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr class="s-kerala">
+                  <th scope="row" class="dest-col">Kerala<small>Calm nature and houseboat stays</small></th>
+                  <td class="on"><span class="visually-hidden">Best</span></td><td class="on"><span class="visually-hidden">Best</span></td><td class="on"><span class="visually-hidden">Best</span></td><td></td><td></td><td></td><td></td><td></td><td class="on"><span class="visually-hidden">Best</span></td><td class="on"><span class="visually-hidden">Best</span></td><td class="on"><span class="visually-hidden">Best</span></td><td class="on"><span class="visually-hidden">Best</span></td>
+                </tr>
+                <tr class="s-goa">
+                  <th scope="row" class="dest-col">Goa<small>Beaches, food and easy days</small></th>
+                  <td class="on"><span class="visually-hidden">Best</span></td><td class="on"><span class="visually-hidden">Best</span></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td class="on"><span class="visually-hidden">Best</span></td><td class="on"><span class="visually-hidden">Best</span></td>
+                </tr>
+                <tr class="s-kashmir">
+                  <th scope="row" class="dest-col">Kashmir<small>Mountain views and cool air</small></th>
+                  <td></td><td></td><td></td><td class="on"><span class="visually-hidden">Best</span></td><td class="on"><span class="visually-hidden">Best</span></td><td class="on"><span class="visually-hidden">Best</span></td><td class="on"><span class="visually-hidden">Best</span></td><td class="on"><span class="visually-hidden">Best</span></td><td class="on"><span class="visually-hidden">Best</span></td><td class="on"><span class="visually-hidden">Best</span></td><td></td><td></td>
+                </tr>
+                <tr class="s-rajasthan">
+                  <th scope="row" class="dest-col">Rajasthan<small>History, forts and local culture</small></th>
+                  <td class="on"><span class="visually-hidden">Best</span></td><td class="on"><span class="visually-hidden">Best</span></td><td class="on"><span class="visually-hidden">Best</span></td><td></td><td></td><td></td><td></td><td></td><td></td><td class="on"><span class="visually-hidden">Best</span></td><td class="on"><span class="visually-hidden">Best</span></td><td class="on"><span class="visually-hidden">Best</span></td>
+                </tr>
+                <tr class="s-manali">
+                  <th scope="row" class="dest-col">Manali<small>Adventure sports and snow</small></th>
+                  <td class="on"><span class="visually-hidden">Best</span></td><td class="on"><span class="visually-hidden">Best</span></td><td class="on"><span class="visually-hidden">Best</span></td><td class="on"><span class="visually-hidden">Best</span></td><td class="on"><span class="visually-hidden">Best</span></td><td class="on"><span class="visually-hidden">Best</span></td><td></td><td></td><td></td><td></td><td></td><td class="on"><span class="visually-hidden">Best</span></td>
+                </tr>
+                <tr class="s-andaman">
+                  <th scope="row" class="dest-col">Andaman<small>Clear sea and water sports</small></th>
+                  <td class="on"><span class="visually-hidden">Best</span></td><td class="on"><span class="visually-hidden">Best</span></td><td class="on"><span class="visually-hidden">Best</span></td><td class="on"><span class="visually-hidden">Best</span></td><td class="on"><span class="visually-hidden">Best</span></td><td></td><td></td><td></td><td></td><td class="on"><span class="visually-hidden">Best</span></td><td class="on"><span class="visually-hidden">Best</span></td><td class="on"><span class="visually-hidden">Best</span></td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          <p class="season-note">Seasons are general guides. Weather changes, so check the forecast before you travel.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ E. BOOKING FORM ============ -->
+    <section id="booking" class="section-pad">
+      <div class="container">
+        <div class="row g-4 g-xl-5 align-items-stretch">
+
+          <div class="col-lg-5">
+            <div class="booking-aside h-100">
+              <h2>Book your trip</h2>
+              <p class="lead-soft">Tell us where and when. We use your details only to plan your trip.</p>
+              <ul class="list-unstyled aside-list">
+                <li><i class="bi bi-geo-alt" aria-hidden="true"></i><span>Choose from six destinations</span></li>
+                <li><i class="bi bi-people" aria-hidden="true"></i><span>Travelling with family or friends? Add the group size</span></li>
+                <li><i class="bi bi-chat-left-text" aria-hidden="true"></i><span>Share food, hotel or accessibility needs in the message box</span></li>
+              </ul>
+              <svg class="aside-mark" aria-hidden="true" focusable="false"><use href="#wMarkSun"/></svg>
+            </div>
+          </div>
+
+          <div class="col-lg-7">
+            <div class="card form-card">
+              <div class="card-body p-4 p-md-5">
+
+                <!-- No JavaScript needed: the browser checks "required" fields itself -->
+                <form action="#" method="post">
+                  <div class="row g-3">
+
+                    <div class="col-md-6">
+                      <label for="fullName" class="form-label">Full Name</label>
+                      <input type="text" class="form-control" id="fullName" name="fullName" placeholder="Your full name" autocomplete="name" required>
+                    </div>
+
+                    <div class="col-md-6">
+                      <label for="email" class="form-label">Email</label>
+                      <input type="email" class="form-control" id="email" name="email" placeholder="you@example.com" autocomplete="email" required>
+                    </div>
+
+                    <div class="col-md-6">
+                      <label for="phone" class="form-label">Phone Number</label>
+                      <input type="tel" class="form-control" id="phone" name="phone" placeholder="10-digit mobile number" pattern="[0-9]{10}" inputmode="numeric" autocomplete="tel" required>
+                    </div>
+
+                    <div class="col-md-6">
+                      <label for="destination" class="form-label">Destination</label>
+                      <select class="form-select" id="destination" name="destination" required>
+                        <option value="" selected disabled>Choose a destination</option>
+                        <option>Kerala</option>
+                        <option>Goa</option>
+                        <option>Kashmir</option>
+                        <option>Rajasthan</option>
+                        <option>Manali</option>
+                        <option>Andaman</option>
+                      </select>
+                    </div>
+
+                    <div class="col-md-6">
+                      <label for="travelDate" class="form-label">Travel Date</label>
+                      <input type="date" class="form-control" id="travelDate" name="travelDate" required>
+                    </div>
+
+                    <div class="col-md-6">
+                      <label for="visitors" class="form-label">Number of Visitors</label>
+                      <input type="number" class="form-control" id="visitors" name="visitors" min="1" max="20" value="1" required>
+                    </div>
+
+                    <div class="col-12">
+                      <label for="message" class="form-label">Special Requirements / Message</label>
+                      <textarea class="form-control" id="message" name="message" rows="4" placeholder="Food preferences, accessibility needs, hotel type, anything else"></textarea>
+                    </div>
+
+                    <div class="col-12 d-grid pt-2">
+                      <button type="submit" class="btn btn-brand btn-lg"><i class="bi bi-send-fill" aria-hidden="true"></i>Submit Booking</button>
+                    </div>
+
+                  </div>
+                </form>
+
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ F. ABOUT SECTION ============ -->
+    <section id="about" class="section-pad section-mist">
+      <div class="container">
+        <div class="row gy-5 gx-lg-5 align-items-center">
+
+          <div class="col-lg-6">
+            <h2 class="about-title">A simple way to choose where to go</h2>
+            <p class="about-text">
+              Wanderly is a simple travel website built to help you discover amazing destinations.
+              We show you the best places to visit, when to go and what makes each place special.
+              Choose your destination, send a booking request, and let us help plan the rest.
+              Our goal is to make planning a trip as easy as it should be.
+            </p>
+          </div>
+
+          <div class="col-lg-6">
+            <ul class="about-points list-unstyled mb-0">
+              <li>
+                <i class="bi bi-map" aria-hidden="true"></i>
+                <div><h3>Places</h3><p>Six destinations with the sights that matter most.</p></div>
+              </li>
+              <li>
+                <i class="bi bi-calendar-check" aria-hidden="true"></i>
+                <div><h3>Timing</h3><p>A month-by-month guide to the best season for each place.</p></div>
+              </li>
+              <li>
+                <i class="bi bi-send" aria-hidden="true"></i>
+                <div><h3>Booking</h3><p>One short form to send your plans.</p></div>
+              </li>
+            </ul>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ============ G. FOOTER ============ -->
+  <footer class="site-footer">
+    <div class="container">
+      <div class="row g-4">
+
+        <div class="col-lg-5 col-12">
+          <a class="brand footer-brand" href="#home"><svg class="brand-logo" aria-hidden="true" focusable="false"><use href="#wMarkSun"/></svg><span>Wanderly</span></a>
+          <p class="footer-tag">Explore. Discover. Travel.</p>
+          <ul class="social list-unstyled d-flex gap-2 mt-4 mb-0">
+            <li><a class="social-btn" href="#" aria-label="Wanderly on Instagram"><i class="bi bi-instagram" aria-hidden="true"></i></a></li>
+            <li><a class="social-btn" href="#" aria-label="Wanderly on Facebook"><i class="bi bi-facebook" aria-hidden="true"></i></a></li>
+            <li><a class="social-btn" href="#" aria-label="Wanderly on YouTube"><i class="bi bi-youtube" aria-hidden="true"></i></a></li>
+            <li><a class="social-btn" href="#" aria-label="Chat with Wanderly on WhatsApp"><i class="bi bi-whatsapp" aria-hidden="true"></i></a></li>
+          </ul>
+        </div>
+
+        <div class="col-lg-3 col-md-6 col-6">
+          <h2 class="footer-head">Quick links</h2>
+          <ul class="list-unstyled mb-0">
+            <li><a href="#home" class="footer-link">Home</a></li>
+            <li><a href="#destinations" class="footer-link">Destinations</a></li>
+            <li><a href="#when" class="footer-link">When to go</a></li>
+            <li><a href="#about" class="footer-link">About</a></li>
+            <li><a href="#booking" class="footer-link">Book Now</a></li>
+          </ul>
+        </div>
+
+        <div class="col-lg-4 col-md-6 col-12">
+          <h2 class="footer-head">Contact</h2>
+          <ul class="list-unstyled mb-0 footer-contact">
+            <li><i class="bi bi-envelope" aria-hidden="true"></i> hello@wanderly.example</li>
+            <li><i class="bi bi-telephone" aria-hidden="true"></i> +91 00000 00000</li>
+            <li><i class="bi bi-clock" aria-hidden="true"></i> Mon to Sat, 9 AM to 6 PM</li>
+          </ul>
+        </div>
+
+      </div>
+            <details class="photo-credits">
+        <summary>Photo credits</summary>
+        <ul class="list-unstyled">
+          <li>Hero: <a href="https://commons.wikimedia.org/wiki/File:Srinagar_pano.jpg" target="_blank" rel="noopener">Srinagar pano</a> by KennyOMG, CC BY-SA 3.0 / GFDL</li>
+          <li>Kerala: <a href="https://commons.wikimedia.org/wiki/File:Kerala_backwaters,_Vembanad_Lake,_Houseboats,_India.jpg" target="_blank" rel="noopener">Kerala backwaters, Vembanad Lake</a>, Wikimedia Commons</li>
+          <li>Goa: <a href="https://commons.wikimedia.org/wiki/File:Anjuna_Beach,_Goa,_India,_Legendary_Curlies_beach_shack.jpg" target="_blank" rel="noopener">Anjuna Beach</a> by Vyacheslav Argenberg, CC BY 4.0</li>
+          <li>Kashmir: <a href="https://commons.wikimedia.org/wiki/File:Shikara_in_Dal_Lake_in_Kashmir.JPG" target="_blank" rel="noopener">Shikara in Dal Lake</a> by Basharat Shah, CC BY 2.0</li>
+          <li>Rajasthan: <a href="https://commons.wikimedia.org/wiki/File:Jaipur_03-2016_02_Amber_Fort.jpg" target="_blank" rel="noopener">Amber Fort</a> by A.Savin, Free Art License</li>
+          <li>Manali: <a href="https://commons.wikimedia.org/wiki/File:Kullu_Valley,_Beas_River_near_Manali,_India.jpg" target="_blank" rel="noopener">Beas River near Manali</a> by Vyacheslav Argenberg, CC BY 4.0</li>
+          <li>Andaman: <a href="https://commons.wikimedia.org/wiki/File:Havelock_Island,_Mangrove_tree_on_the_beach,_Andaman_Islands.jpg" target="_blank" rel="noopener">Havelock Island</a> by Vyacheslav Argenberg, CC BY 4.0</li>
+        </ul>
+      </details>
+      <p class="footer-copy">&copy; 2026 Wanderly. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <!-- Bootstrap JS bundle: only powers the navbar hamburger menu. We write NO custom JavaScript. -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

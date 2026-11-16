@@ -1,0 +1,688 @@
+/* =====================================================
+   Wanderly - custom styles
+   Bootstrap handles layout (grid, navbar, cards, forms).
+   This file adds the identity: colour, type, hero scene,
+   per-destination colour worlds and the season grid.
+   ===================================================== */
+
+/* ---------- 1. Design tokens ---------- */
+:root {
+  --ink: #0F2430;
+  --ink-2: #17333F;
+  --lagoon: #0E7C7B;
+  --sun: #F4B63F;
+  --sun-soft: #F8CB6E;
+  --mist: #EEF3F2;
+  --text: #1E2E36;
+  --muted: #5A6B73;
+  --line: #D5DEDD;
+
+  --font-display: "Bricolage Grotesque", "Segoe UI", system-ui, sans-serif;
+  --font-body: "Figtree", "Segoe UI", system-ui, -apple-system, sans-serif;
+
+  --radius-lg: 20px;
+  --radius-md: 12px;
+}
+
+/* ---------- 2. Base ---------- */
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 80px;
+}
+
+body {
+  font-family: var(--font-body);
+  color: var(--text);
+  background: #fff;
+  line-height: 1.6;
+}
+
+h1, h2, h3, h4 {
+  font-family: var(--font-display);
+  color: var(--ink);
+  letter-spacing: -0.02em;
+}
+
+:focus-visible {
+  outline: 3px solid var(--lagoon);
+  outline-offset: 3px;
+}
+
+.hero :focus-visible,
+.site-nav :focus-visible,
+.booking-aside :focus-visible,
+.site-footer :focus-visible {
+  outline-color: var(--sun);
+}
+
+.skip-link {
+  position: absolute;
+  left: 1rem;
+  top: -4rem;
+  z-index: 2000;
+  padding: .6rem 1rem;
+  background: var(--sun);
+  color: var(--ink);
+  font-weight: 600;
+  border-radius: 8px;
+  text-decoration: none;
+}
+.skip-link:focus { top: 1rem; }
+
+/* ---------- 3. Buttons ---------- */
+.btn {
+  font-weight: 600;
+  border-radius: 999px;
+  transition: background-color .2s ease, color .2s ease, border-color .2s ease, transform .2s ease;
+}
+
+/* Icons inside buttons */
+.btn .bi {
+  margin-right: .5rem;
+  vertical-align: -0.125em;
+}
+
+.btn-sun {
+  background: var(--sun);
+  border-color: var(--sun);
+  color: var(--ink);
+}
+.btn-sun:hover, .btn-sun:focus-visible {
+  background: var(--sun-soft);
+  border-color: var(--sun-soft);
+  color: var(--ink);
+}
+
+.btn-glass {
+  background: rgba(255, 255, 255, .12);
+  border: 1.5px solid rgba(255, 255, 255, .55);
+  color: #fff;
+  backdrop-filter: blur(6px);
+}
+.btn-glass:hover, .btn-glass:focus-visible {
+  background: #fff;
+  border-color: #fff;
+  color: var(--ink);
+}
+
+.btn-brand {
+  background: var(--lagoon);
+  border-color: var(--lagoon);
+  color: #fff;
+}
+.btn-brand:hover, .btn-brand:focus-visible {
+  background: var(--ink);
+  border-color: var(--ink);
+  color: #fff;
+}
+
+/* ---------- 4. Navbar (frosted glass) ---------- */
+.site-nav {
+  background: rgba(15, 36, 48, .82);
+  -webkit-backdrop-filter: blur(14px);
+  backdrop-filter: blur(14px);
+  border-bottom: 1px solid rgba(255, 255, 255, .08);
+  padding-block: .7rem;
+}
+
+.brand {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 1.4rem;
+  letter-spacing: -0.02em;
+  color: #fff;
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+}
+.brand:hover { color: #fff; }
+
+.brand-logo {
+  width: 34px;
+  height: 34px;
+  margin-right: .6rem;
+  flex: 0 0 auto;
+}
+
+.site-nav .nav-link {
+  color: rgba(255, 255, 255, .78);
+  font-weight: 500;
+  padding-inline: .85rem;
+  transition: color .2s ease;
+}
+.site-nav .nav-link:hover,
+.site-nav .nav-link:focus-visible { color: #fff; }
+
+/* ---------- 5. Hero ---------- */
+.hero {
+  position: relative;
+  min-height: 100vh;
+  min-height: 100svh;
+  display: flex;
+  align-items: center;
+  overflow: hidden;
+  padding: 7rem 0 5rem;
+  background: linear-gradient(180deg, #0F2430 0%, #1B4A56 58%, #D9822F 135%);
+}
+
+.hero-scene,
+.hero-photo,
+.hero-scrim {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+}
+
+/* Dal Lake panorama from Wikimedia Commons. If it cannot load, this layer paints nothing and the drawn scene shows. */
+.hero-photo {
+  background: url("https://commons.wikimedia.org/wiki/Special:FilePath/Srinagar_pano.jpg?width=1920") center / cover no-repeat;
+}
+
+.hero-scrim {
+  background:
+    linear-gradient(90deg, rgba(15, 36, 48, .85) 0%, rgba(15, 36, 48, .5) 55%, rgba(15, 36, 48, .12) 100%),
+    linear-gradient(0deg, rgba(15, 36, 48, .55) 0%, transparent 40%);
+}
+
+.hero-inner { position: relative; z-index: 2; }
+
+.hero-title {
+  color: #fff;
+  font-weight: 700;
+  font-size: clamp(2.9rem, 8vw, 6rem);
+  line-height: .98;
+  letter-spacing: -0.04em;
+  margin-bottom: 1.25rem;
+}
+
+.hero-lead {
+  color: rgba(255, 255, 255, .85);
+  font-size: clamp(1.1rem, 2vw, 1.35rem);
+  max-width: 32rem;
+  margin-bottom: 2rem;
+}
+
+.hero-pills a {
+  display: inline-block;
+  padding: .4rem 1rem;
+  border: 1px solid rgba(255, 255, 255, .35);
+  border-radius: 999px;
+  color: #fff;
+  font-size: .95rem;
+  font-weight: 500;
+  text-decoration: none;
+  transition: background-color .2s ease, color .2s ease;
+}
+.hero-pills a:hover,
+.hero-pills a:focus-visible {
+  background: #fff;
+  color: var(--ink);
+}
+
+/* The one orchestrated moment: hero content settles in, in order */
+@keyframes heroIn {
+  from { opacity: 0; transform: translateY(18px); }
+  to   { opacity: 1; transform: none; }
+}
+.hero-inner .col-xl-7 > * {
+  animation: heroIn .8s cubic-bezier(.2, .7, .2, 1) both;
+}
+.hero-inner .col-xl-7 > :nth-child(2) { animation-delay: .12s; }
+.hero-inner .col-xl-7 > :nth-child(3) { animation-delay: .24s; }
+.hero-inner .col-xl-7 > :nth-child(4) { animation-delay: .36s; }
+
+/* ---------- 6. Sections ---------- */
+.section-pad { padding-block: clamp(4rem, 8vw, 7rem); }
+.section-mist { background: var(--mist); }
+
+.section-head {
+  max-width: 40rem;
+  margin-bottom: 3rem;
+}
+.section-head h2 {
+  font-weight: 700;
+  font-size: clamp(2rem, 4.5vw, 3.1rem);
+  line-height: 1.05;
+  letter-spacing: -0.03em;
+  margin-bottom: .75rem;
+}
+.section-head p {
+  color: var(--muted);
+  font-size: 1.1rem;
+  margin: 0;
+}
+
+/* ---------- 7. Destination cards: one colour world each ---------- */
+.dest-card {
+  --accent: #35597A;
+  --sky1: #BFD8F0;
+  --sky2: #EAF3FB;
+  --sunc: #fff;
+  --hill1: #8FB0D0;
+  --hill2: #4F7699;
+  --sx: 72%;
+  --sy: 30%;
+  /* The drawn scene, stored once so the card and a broken image can share it */
+  --scene:
+    radial-gradient(130% 75% at 18% 122%, var(--hill2) 0 60%, transparent 60.5%),
+    radial-gradient(120% 85% at 88% 128%, var(--hill1) 0 62%, transparent 62.5%),
+    radial-gradient(circle at var(--sx) var(--sy), var(--sunc) 0 26px, transparent 27px),
+    linear-gradient(180deg, var(--sky1), var(--sky2));
+
+  border: 0;
+  border-bottom: 4px solid var(--accent);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  background: #fff;
+  box-shadow: 0 1px 2px rgba(15, 36, 48, .08), 0 18px 36px -18px rgba(15, 36, 48, .35);
+  transition: transform .3s ease, box-shadow .3s ease;
+}
+
+.dest-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 1px 2px rgba(15, 36, 48, .08), 0 28px 48px -20px rgba(15, 36, 48, .45);
+}
+
+/* Drawn scene shown until/unless a photo covers it */
+.dest-scene {
+  position: relative;
+  height: 230px;
+  overflow: hidden;
+  background: var(--scene);
+}
+
+/* Only a photo that failed to load draws this pseudo-element. It repaints the
+   scene over the browser's broken-image icon. A loaded photo never shows it. */
+.dest-scene img::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: var(--scene);
+}
+
+.dest-scene img {
+  color: transparent;         /* hide alt text if the photo cannot load */
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;          /* crop, never stretch */
+  transition: transform .5s ease;
+}
+.dest-card:hover .dest-scene img { transform: scale(1.06); }
+
+.season-tag {
+  position: absolute;
+  left: .85rem;
+  top: .85rem;
+  z-index: 2;
+  display: inline-flex;
+  align-items: center;
+  gap: .4rem;
+  padding: .3rem .75rem;
+  border-radius: 999px;
+  background: rgba(15, 36, 48, .78);
+  -webkit-backdrop-filter: blur(6px);
+  backdrop-filter: blur(6px);
+  color: #fff;
+  font-size: .8rem;
+  font-weight: 600;
+}
+.season-tag .bi { color: var(--sun); }
+
+.dest-card .card-body { padding: 1.5rem 1.5rem 1.6rem; }
+
+.dest-card .card-title {
+  font-weight: 700;
+  font-size: 1.6rem;
+  margin-bottom: .1rem;
+}
+
+.dest-angle {
+  color: var(--accent);
+  font-weight: 600;
+  font-size: .95rem;
+  margin-bottom: .8rem;
+}
+
+.dest-card .card-text { color: var(--muted); }
+
+.place-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: .4rem;
+  margin: .25rem 0 1.4rem;
+  padding: 0;
+}
+.place-list li {
+  padding: .2rem .7rem;
+  border-radius: 999px;
+  background: var(--mist);
+  background: color-mix(in srgb, var(--accent) 11%, #fff);
+  color: var(--accent);
+  font-size: .82rem;
+  font-weight: 600;
+}
+
+.btn-dest {
+  border: 1.5px solid var(--accent);
+  color: var(--accent);
+  background: transparent;
+  align-self: flex-start;
+  padding-inline: 1.25rem;
+}
+.btn-dest:hover,
+.btn-dest:focus-visible {
+  background: var(--accent);
+  border-color: var(--accent);
+  color: #fff;
+}
+
+/* Colour worlds */
+.dest-kerala   { --accent: #2D6B47; --sky1: #BFE3D0; --sky2: #EAF4DC; --sunc: #F4D67A; --hill1: #5BA56E; --hill2: #2D6B47; --sx: 76%; --sy: 28%; }
+.dest-goa      { --accent: #C0432A; --sky1: #FFB48A; --sky2: #FFE3BD; --sunc: #FFF4CC; --hill1: #2A98AD; --hill2: #0E6A80; --sx: 50%; --sy: 52%; }
+.dest-kashmir  { --accent: #35597A; --sky1: #BFD8F0; --sky2: #EDF5FC; --sunc: #FFFFFF; --hill1: #93B2D2; --hill2: #4F7699; --sx: 24%; --sy: 26%; }
+.dest-rajasthan{ --accent: #9C5A1B; --sky1: #F7C47E; --sky2: #FCE8C4; --sunc: #EE8A3C; --hill1: #E0A154; --hill2: #B5712F; --sx: 70%; --sy: 36%; }
+.dest-manali   { --accent: #2F5B4B; --sky1: #CFE0D8; --sky2: #EDF4EF; --sunc: #FFF7D6; --hill1: #6A9886; --hill2: #2F5B4B; --sx: 28%; --sy: 28%; }
+.dest-andaman  { --accent: #0B7677; --sky1: #A8E6E0; --sky2: #E6F9F5; --sunc: #FFF0B5; --hill1: #3CBAB4; --hill2: #0E8C8E; --sx: 74%; --sy: 30%; }
+
+/* ---------- 8. Season grid ---------- */
+.season-card {
+  background: #fff;
+  border-radius: var(--radius-lg);
+  padding: 1.25rem 1.5rem 1rem;
+  box-shadow: 0 1px 2px rgba(15, 36, 48, .08), 0 18px 36px -22px rgba(15, 36, 48, .3);
+}
+
+.season-table {
+  --bs-table-bg: transparent;
+  min-width: 520px;
+  table-layout: fixed;
+}
+
+.season-table thead th {
+  border-bottom: 1px solid var(--line);
+  color: var(--muted);
+  font-size: .8rem;
+  font-weight: 600;
+  text-align: center;
+  padding: .6rem .1rem;
+}
+.season-table abbr { text-decoration: none; cursor: help; }
+
+.season-table tbody th,
+.season-table tbody td {
+  height: 62px;
+  padding: 0;
+  border-bottom: 1px solid var(--mist);
+}
+.season-table tbody tr:last-child th,
+.season-table tbody tr:last-child td { border-bottom: 0; }
+
+.season-table .dest-col {
+  width: 34%;
+  text-align: left;
+  padding-left: .25rem;
+}
+.season-table tbody .dest-col {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 1.1rem;
+  color: var(--ink);
+  line-height: 1.2;
+}
+.dest-col small {
+  display: block;
+  margin-top: .15rem;
+  font-family: var(--font-body);
+  font-size: .78rem;
+  font-weight: 400;
+  color: var(--muted);
+}
+
+/* A filled, rounded block marks each good month */
+.season-table td { position: relative; }
+.season-table td.on::before {
+  content: "";
+  position: absolute;
+  inset: 14px 2px;
+  border-radius: 8px;
+  background: var(--bar, var(--lagoon));
+}
+
+.s-kerala    { --bar: #2D6B47; }
+.s-goa       { --bar: #C0432A; }
+.s-kashmir   { --bar: #35597A; }
+.s-rajasthan { --bar: #C17A2A; }
+.s-manali    { --bar: #2F5B4B; }
+.s-andaman   { --bar: #0B8C8D; }
+
+.season-note {
+  margin: .9rem 0 .2rem;
+  color: var(--muted);
+  font-size: .85rem;
+}
+
+/* ---------- 9. Booking ---------- */
+.booking-aside {
+  background:
+    radial-gradient(circle at 100% 100%, rgba(14, 124, 123, .55), transparent 55%),
+    var(--ink);
+  color: #fff;
+  border-radius: var(--radius-lg);
+  padding: clamp(1.75rem, 4vw, 3rem);
+  position: relative;
+  overflow: hidden;
+}
+/* Large faint logo mark in the corner of the panel */
+.aside-mark {
+  position: absolute;
+  right: -2.5rem;
+  bottom: -2.5rem;
+  width: 15rem;
+  height: 15rem;
+  opacity: .1;
+  transform: rotate(-12deg);
+  pointer-events: none;
+}
+.booking-aside h2 {
+  color: #fff;
+  font-weight: 700;
+  font-size: clamp(2rem, 4vw, 2.8rem);
+  line-height: 1.05;
+  letter-spacing: -0.03em;
+  margin-bottom: 1rem;
+}
+.lead-soft {
+  color: rgba(255, 255, 255, .78);
+  font-size: 1.1rem;
+  margin-bottom: 2rem;
+}
+.aside-list { margin: 0; }
+.aside-list li {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding: .9rem 0;
+  border-top: 1px solid rgba(255, 255, 255, .14);
+  color: rgba(255, 255, 255, .88);
+}
+.aside-list .bi {
+  flex: 0 0 auto;
+  display: grid;
+  place-items: center;
+  width: 2.5rem;
+  height: 2.5rem;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, .1);
+  color: var(--sun);
+  font-size: 1.1rem;
+}
+
+.form-card {
+  border: 0;
+  border-radius: var(--radius-lg);
+  box-shadow: 0 1px 2px rgba(15, 36, 48, .08), 0 24px 48px -24px rgba(15, 36, 48, .35);
+}
+
+.form-label {
+  font-weight: 600;
+  font-size: .9rem;
+  color: var(--ink);
+  margin-bottom: .35rem;
+}
+
+.form-control,
+.form-select {
+  border: 1.5px solid var(--line);
+  border-radius: var(--radius-md);
+  padding: .7rem .9rem;
+  color: var(--text);
+}
+.form-control::placeholder { color: #8A999F; }
+.form-control:focus,
+.form-select:focus {
+  border-color: var(--lagoon);
+  box-shadow: 0 0 0 .25rem rgba(14, 124, 123, .18);
+}
+
+/* ---------- 10. About ---------- */
+.about-title {
+  font-weight: 700;
+  font-size: clamp(2rem, 4.5vw, 3rem);
+  line-height: 1.05;
+  letter-spacing: -0.03em;
+  margin-bottom: 1.25rem;
+}
+.about-text {
+  color: var(--muted);
+  font-size: 1.1rem;
+  line-height: 1.75;
+  max-width: 36rem;
+  margin: 0;
+}
+
+.about-points li {
+  display: flex;
+  gap: 1.1rem;
+  padding: 1.25rem 0;
+  border-bottom: 1px solid rgba(15, 36, 48, .14);
+}
+.about-points li:first-child { padding-top: 0; }
+.about-points li:last-child { border-bottom: 0; padding-bottom: 0; }
+.about-points .bi {
+  flex: 0 0 auto;
+  display: grid;
+  place-items: center;
+  width: 3rem;
+  height: 3rem;
+  border-radius: 14px;
+  background: var(--ink);
+  color: var(--sun);
+  font-size: 1.3rem;
+}
+.about-points h3 {
+  font-size: 1.15rem;
+  font-weight: 700;
+  margin: 0 0 .2rem;
+}
+.about-points p { margin: 0; color: var(--muted); }
+
+/* ---------- 11. Footer ---------- */
+.site-footer {
+  background: var(--ink);
+  color: rgba(255, 255, 255, .7);
+  padding: 4.5rem 0 2rem;
+}
+.footer-brand { font-size: 2rem; }
+.footer-brand .brand-logo { width: 44px; height: 44px; }
+.footer-tag { margin: .5rem 0 0; color: rgba(255, 255, 255, .6); }
+
+.footer-head {
+  font-size: 1rem;
+  font-weight: 600;
+  color: #fff;
+  margin-bottom: 1rem;
+}
+
+.site-footer li { margin-bottom: .55rem; }
+
+.footer-link {
+  color: rgba(255, 255, 255, .7);
+  text-decoration: none;
+}
+.footer-link:hover,
+.footer-link:focus-visible {
+  color: #fff;
+  text-decoration: underline;
+}
+
+.footer-contact li { overflow-wrap: anywhere; }
+.footer-contact .bi { color: var(--sun); margin-right: .5rem; }
+
+.footer-copy {
+  margin: 1.5rem 0 0;
+  padding-top: 1.5rem;
+  border-top: 1px solid rgba(255, 255, 255, .14);
+  font-size: .875rem;
+  color: rgba(255, 255, 255, .55);
+}
+
+/* Social buttons and photo credits */
+.social-btn {
+  display: grid;
+  place-items: center;
+  width: 2.6rem;
+  height: 2.6rem;
+  border-radius: 50%;
+  border: 1px solid rgba(255, 255, 255, .28);
+  color: #fff;
+  font-size: 1.05rem;
+  text-decoration: none;
+  transition: background-color .2s ease, color .2s ease, border-color .2s ease;
+}
+.social-btn:hover,
+.social-btn:focus-visible {
+  background: var(--sun);
+  border-color: var(--sun);
+  color: var(--ink);
+}
+
+.photo-credits {
+  margin-top: 2.5rem;
+  font-size: .85rem;
+  color: rgba(255, 255, 255, .6);
+}
+.photo-credits summary { cursor: pointer; color: rgba(255, 255, 255, .8); }
+.photo-credits ul { margin: .9rem 0 0; columns: 2 20rem; column-gap: 2rem; }
+.photo-credits li { margin-bottom: .4rem; break-inside: avoid; }
+.photo-credits a { color: rgba(255, 255, 255, .85); }
+.photo-credits a:hover { color: #fff; }
+
+/* ---------- 12. Small screens ---------- */
+@media (max-width: 767.98px) {
+  /* Fit all 12 months on a phone screen: no sideways scrolling */
+  .season-table { min-width: 0; }
+  .season-table .dest-col small { display: none; }
+  .season-table .dest-col { width: 27%; }
+  .season-table tbody .dest-col { font-size: .92rem; }
+  .season-table thead th { font-size: .7rem; }
+  .season-table td.on::before { inset: 14px 1px; border-radius: 6px; }
+  .season-card { padding: 1rem .75rem .8rem; }
+}
+
+@media (max-width: 575.98px) {
+  .hero { padding-top: 6rem; }
+  .dest-scene { height: 200px; }
+  .btn-lg { width: 100%; }
+}
+
+/* ---------- 13. Respect reduced motion ---------- */
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  *, *::before, *::after {
+    animation: none !important;
+    transition: none !important;
+  }
+}
